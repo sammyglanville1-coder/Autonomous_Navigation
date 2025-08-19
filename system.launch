@@ -1,0 +1,19 @@
+<launch>
+    <!-- Load the map -->
+    <node pkg="map_server" type="map_server" name="map_server" args="$(find rrt_mapping)/maps/map.yaml" />
+
+    <!-- URDF -->
+    <param name="robot_description" textfile="$(find rrt_mapping)/urdf/jetacker.urdf" />
+
+    <!-- Robot state -->
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+
+    <!-- Start RRT Goal Planner -->
+    <node pkg="rrt_mapping" type="RRTvisuliser.py" name="rrt_goal_planner" output="screen" />
+
+    <!-- Start NMPC Controller -->
+    <node pkg="rrt_mapping" type="RRT_NMPC.py" name="rrt_to_nmpc" output="screen" />
+
+    <!-- Launch RViz -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d /root/Project3/src/rvis.rviz" />
+</launch>
