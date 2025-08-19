@@ -1,0 +1,7 @@
+numpy
+opencv-python
+PyYAML
+matplotlib
+casadi
+opengen
+imageio # for PNG → PGM conversion 
