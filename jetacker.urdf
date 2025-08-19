@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<robot name="jetacker">
+
+
+  <!-- Heading Arrow -->
+  <link name="heading_arrow">
+    <visual>
+      <geometry>
+        <cylinder length="0.3" radius="0.01"/> <!-- arrow shaft -->
+      </geometry>
+      <origin xyz="0.2 0 0.05" rpy="0 1.57 0"/> <!-- rotate to point in x -->
+      <material name="red">
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="arrow_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="heading_arrow"/>
+  </joint>
+
+  <!-- Base -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.35 0.25 0.1"/> <!-- Approximate base dimensions -->
+      </geometry>
+      <origin xyz="0 0 0.05"/>
+      <material name="blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Front Left Wheel -->
+  <link name="front_left_wheel">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.04"/>
+      </geometry>
+      <origin xyz="0.107 0.1 0.02" rpy="1.57 0 0"/> <!-- Adjusted wheelbase -->
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Front Right Wheel -->
+  <link name="front_right_wheel">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.04"/>
+      </geometry>
+      <origin xyz="0.107 -0.1 0.02" rpy="1.57 0 0"/>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Rear Left Wheel -->
+  <link name="rear_left_wheel">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.04"/>
+      </geometry>
+      <origin xyz="-0.107 0.1 0.02" rpy="1.57 0 0"/>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Rear Right Wheel -->
+  <link name="rear_right_wheel">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.04"/>
+      </geometry>
+      <origin xyz="-0.107 -0.1 0.02" rpy="1.57 0 0"/>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Joints -->
+  <joint name="front_left_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="front_left_wheel"/>
+  </joint>
+
+  <joint name="front_right_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="front_right_wheel"/>
+  </joint>
+
+  <joint name="rear_left_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="rear_left_wheel"/>
+  </joint>
+
+  <joint name="rear_right_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="rear_right_wheel"/>
+  </joint>
+
+</robot>
